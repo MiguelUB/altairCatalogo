@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block head %}
+    {{ super() }}
+
+{% endblock %}
+{% block content %}
+    <h1>{{ title }}</h1>
+    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+        officia deserunt mollit anim id est laborum.
+    </p>
+
+    <div id="chart"></div>
+    <div id="chart2"></div>
+    <div id="chart3"></div>
+    <div id="chart4"></div>
+
+{% endblock %}
+
+{% block script %}
+
+<script type="text/javascript">
+    // Especifica tu especificación de Vega-Lite
+    let spec = {{ chartData|tojson }};
+
+    let embedOpt = {"mode": "vega-lite"};
+
+    function showError(el, error) {
+        el.innerHTML = ('<div style="color:red;">'
+            + '<p>JavaScript Error: ' + error.message + '</p>'
+            + "<p>This usually means there's a typo in your chart specification. "
+            + "See the javascript console for the full traceback.</p>"
+            + '</div>');
+        throw error;
+    }
+
+    const el = document.getElementById('chart');
+
+    vegaEmbed("#chart", spec, embedOpt).catch(error => showError(el, error));
+
+</script>
+
+{% endblock %}

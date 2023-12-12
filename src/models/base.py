@@ -1,3 +1,5 @@
+import json
+
 from vega_datasets import data
 import altair as alt
 
@@ -10,17 +12,10 @@ class ChartBase:
         self.dataset = dataset
 
 
-    def toJson(self, name):
-        if self.chart is None:
-            print('The chart has not been created yet')
-        else:
-            self.chart.save(name + '.json')
+    def toJson(self):
+        return json.loads(self.chart.to_json())
 
-    def toHtml(self, name):
-        if self.chart is None:
-            print('The chart has not been created yet')
-        else:
-            self.chart.save(name + '.html')
+
 
     def defineChart(self):
         """
@@ -28,9 +23,10 @@ class ChartBase:
         """
         pass
 
-    def setThemeChart(self):
+    def setThemeChart(self,name_theme):
         """
         This will change the colors and shapes of the chart when comparing
         :return:
         """
-        pass
+        alt.themes.enable(name_theme)
+        self.chart = self.defineChart()
