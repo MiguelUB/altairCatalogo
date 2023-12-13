@@ -16,13 +16,12 @@ charts_bp = Blueprint(
 
 @charts_bp.route("/barcharts", methods=["GET"])
 def bar_charts_view():
-    base = BarChart()
-    base.setThemeChart("dark")
+
 
     return render_template(
         "bar_charts_view.html",
         title="Bar Charts",
-        chartData=base.toJson()
+
     )
 
 

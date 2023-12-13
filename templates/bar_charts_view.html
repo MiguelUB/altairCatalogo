@@ -22,25 +22,51 @@
 
 {% block script %}
 
-<script type="text/javascript">
-    // Especifica tu especificación de Vega-Lite
-    let spec = {{ chartData|tojson }};
+    <script type="text/javascript">
 
-    let embedOpt = {"mode": "vega-lite"};
+        const apiUrl = 'http://127.0.0.1:5000/api/barchart';
+        let spec;
 
-    function showError(el, error) {
-        el.innerHTML = ('<div style="color:red;">'
-            + '<p>JavaScript Error: ' + error.message + '</p>'
-            + "<p>This usually means there's a typo in your chart specification. "
-            + "See the javascript console for the full traceback.</p>"
-            + '</div>');
-        throw error;
-    }
+        let embedOpt = {"mode": "vega-lite"};
 
-    const el = document.getElementById('chart');
+        // Parámetros de consulta
+        let params = {
+            type_chart: '1',
+            theme_chart: 'powerbi'
+        };
 
-    vegaEmbed("#chart", spec, embedOpt).catch(error => showError(el, error));
+        function showError(el, error) {
+            el.innerHTML = ('<div style="color:red;">'
+                + '<p>JavaScript Error: ' + error.message + '</p>'
+                + "<p>This usually means there's a typo in your chart specification. "
+                + "See the javascript console for the full traceback.</p>"
+                + '</div>');
+            throw error;
+        }
 
-</script>
+
+        // Realizar la llamada a la API con Axios
+        axios.get(apiUrl, {params: params})
+            .then(response => {
+                // Manejar los datos obtenidos de la API
+                spec = response.data
+
+            })
+            .then(r => {
+                vegaEmbed("#chart", spec, embedOpt).catch(error => showError(el, error));
+            })
+            .catch(error => {
+                // Manejar errores de la solicitud
+                console.error('Error al realizar la solicitud:', error);
+            });
+
+        // Especifica tu especificación de Vega-Lite
+
+
+        const el = document.getElementById('chart');
+
+        vegaEmbed("#chart", spec, embedOpt).catch(error => showError(el, error));
+
+    </script>
 
 {% endblock %}

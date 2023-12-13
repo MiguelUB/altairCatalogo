@@ -3,8 +3,8 @@ import json
 import altair
 from flask import Blueprint, request
 
-
 from src.models.BarCharts import BarChart, BarCharWLabels, StackedBarChar
+from src.models.base import ChartBase
 
 api_bp = Blueprint(
     "api_bp",
@@ -23,21 +23,23 @@ def get_chart():
         Results (dict): Bar chart in vega configuration
     """
     base = None
+
     type_chart = request.args.get("type_chart").lower()
     theme_chart = request.args.get("theme_chart", "default").lower()
+    print("FFFFF", request.args, type(type_chart), theme_chart)
 
     if type_chart is None:
         return {"error": "type chart must be a type of bar chart like, bar_chart"}
-    if not theme_chart in altair.themes.names():
-        return {"error": "theme not registered in altair"+str(altair.themes.names())}
+    if theme_chart not in altair.themes.names():
+        return {"error": "theme not registered in altair" + str(altair.themes.names())}
 
-
-    if type_chart is "1":
+    if type_chart == "1":
         base = BarChart()
-        base.setThemeChart('dark')
-    elif type_chart is "2":
+        base.setThemeChart(theme_chart)
+    elif type_chart == "2":
         base = BarCharWLabels()
-    elif type_chart is "3":
+    elif type_chart == "3":
         base = StackedBarChar()
+    print(base)
 
     return base.toJson()
