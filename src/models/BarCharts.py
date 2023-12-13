@@ -50,5 +50,3 @@ class StackedBarChar(ChartBase):
             color='site'
         )
 
-
-
