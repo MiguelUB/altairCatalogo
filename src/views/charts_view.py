@@ -17,7 +17,6 @@ charts_bp = Blueprint(
 @charts_bp.route("/barcharts", methods=["GET"])
 def bar_charts_view():
 
-
     return render_template(
         "bar_charts_view.html",
         title="Bar Charts",
@@ -29,7 +28,7 @@ def bar_charts_view():
 def line_charts_view():
     return render_template(
         "line_charts_view.html",
-        title="Pomodoretis"
+        title="Line Charts"
     )
 
 
@@ -37,7 +36,7 @@ def line_charts_view():
 def area_charts_view():
     return render_template(
         "area_charts_view.html",
-        title="Pomodoretis"
+        title="Area Charts"
     )
 
 
@@ -45,7 +44,7 @@ def area_charts_view():
 def circular_plots_view():
     return render_template(
         "circular_plots_view.html",
-        title="Pomodoretis"
+        title="Circular Plots"
     )
 
 
@@ -53,7 +52,7 @@ def circular_plots_view():
 def scatter_plots_view():
     return render_template(
         "scatter_plots_view.html",
-        title="Pomodoretis"
+        title="Scatter Plots"
     )
 
 
@@ -61,7 +60,7 @@ def scatter_plots_view():
 def distribution_view():
     return render_template(
         "distribution_view.html",
-        title="Pomodoretis"
+        title="Distribution"
     )
 
 
@@ -69,7 +68,7 @@ def distribution_view():
 def maps_view():
     return render_template(
         "maps_view.html",
-        title="Pomodoretis"
+        title="Maps"
     )
 
 
@@ -77,5 +76,5 @@ def maps_view():
 def tables_view():
     return render_template(
         "tables_view.html",
-        title="Pomodoretis"
+        title="Tables"
     )

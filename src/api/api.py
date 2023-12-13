@@ -3,7 +3,8 @@ import json
 import altair
 from flask import Blueprint, request
 
-from src.models.BarCharts import BarChart, BarCharWLabels, StackedBarChar
+from src.models.BarCharts import BarChart, BarCharWLabels, StackedBarChar, BarChartWRollingMean, \
+    DivergingStackedBarChart
 from src.models.base import ChartBase
 
 api_bp = Blueprint(
@@ -26,7 +27,6 @@ def get_chart():
 
     type_chart = request.args.get("type_chart").lower()
     theme_chart = request.args.get("theme_chart", "default").lower()
-    print("FFFFF", request.args, type(type_chart), theme_chart)
 
     if type_chart is None:
         return {"error": "type chart must be a type of bar chart like, bar_chart"}
@@ -38,8 +38,12 @@ def get_chart():
         base.setThemeChart(theme_chart)
     elif type_chart == "2":
         base = BarCharWLabels()
+        base.setThemeChart(theme_chart)
     elif type_chart == "3":
-        base = StackedBarChar()
-    print(base)
+        base = BarChartWRollingMean()
+        base.setThemeChart(theme_chart)
+    elif type_chart == "4":
+        base = DivergingStackedBarChart()
+        base.setThemeChart(theme_chart)
 
     return base.toJson()

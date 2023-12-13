@@ -13,10 +13,33 @@
         officia deserunt mollit anim id est laborum.
     </p>
 
-    <div id="chart"></div>
-    <div id="chart2"></div>
-    <div id="chart3"></div>
-    <div id="chart4"></div>
+    <label for="miSelector">Select a theme:</label>
+    <select id="miSelector">
+        <option value="default">Default</option>
+        <option value="excel">excel</option>
+        <option value="accesible_theme">accesible</option>
+        <option value="dark">dark</option>
+        <option value="ggplot2">ggplot2</option>
+    </select>
+    <div class="container-fluid ">
+        <div class="d-flex flex-row flex-wrap">
+            <div class="c">
+                <div id="chart"></div>
+            </div>
+            <div class="c">
+                <div id="chart2"></div>
+            </div>
+            <div class="c">
+                <div id="chart3"></div>
+            </div>
+            <div class="c">
+                <div id="chart4"></div>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+    </div>
 
 {% endblock %}
 
@@ -30,10 +53,8 @@
         let embedOpt = {"mode": "vega-lite"};
 
         // Parámetros de consulta
-        let params = {
-            type_chart: '1',
-            theme_chart: 'deuteranopia_theme'
-        };
+        let theme_chart = "default"
+
 
         function showError(el, error) {
             el.innerHTML = ('<div style="color:red;">'
@@ -44,28 +65,62 @@
             throw error;
         }
 
+        function fetchCharts(params, divId) {
+            let el = document.getElementById(divId);
+            // Realizar la llamada a la API con Axios
+            axios.get(apiUrl, {params: params})
+                .then(response => {
+                    // Manejar los datos obtenidos de la API
+                    spec = response.data
+                })
+                .then(r => {
+                    vegaEmbed("#" + divId, spec, embedOpt).catch(error => showError(el, error));
+                })
+                .catch(error => {
+                    // Manejar errores de la solicitud
+                    console.error('Error al realizar la solicitud:', error);
+                });
+        }
 
-        // Realizar la llamada a la API con Axios
-        axios.get(apiUrl, {params: params})
-            .then(response => {
-                // Manejar los datos obtenidos de la API
-                spec = response.data
+        function callCharts(theme_name) {
 
-            })
-            .then(r => {
-                vegaEmbed("#chart", spec, embedOpt).catch(error => showError(el, error));
-            })
-            .catch(error => {
-                // Manejar errores de la solicitud
-                console.error('Error al realizar la solicitud:', error);
+            fetchCharts({type_chart: '4', theme_chart: theme_name}, 'chart')
+            fetchCharts({type_chart: '3', theme_chart: theme_name}, 'chart2')
+            fetchCharts({type_chart: '2', theme_chart: theme_name}, 'chart3')
+            fetchCharts({type_chart: '1', theme_chart: theme_name}, 'chart4')
+        }
+
+        callCharts("default")
+
+
+        $(document).ready(function () {
+            $("#miSelector").change(function () {
+                // Obtener el valor seleccionado
+                var valorSeleccionado = $(this).val();
+
+                // Utilizar un switch para manejar diferentes casos
+                switch (valorSeleccionado) {
+                    case "default":
+                        callCharts(valorSeleccionado)
+                        break;
+                    case "excel":
+                        callCharts(valorSeleccionado)
+                        break;
+                    case "accesible_theme":
+                        callCharts(valorSeleccionado)
+                        break;
+                    case "dark":
+                        callCharts(valorSeleccionado)
+                        break;
+                    case "ggplot2":
+                        callCharts(valorSeleccionado)
+                        break;
+                    default:
+                        console.log("error en el nombre de tema")
+                }
             });
+        });
 
-        // Especifica tu especificación de Vega-Lite
-
-
-        const el = document.getElementById('chart');
-
-        vegaEmbed("#chart", spec, embedOpt).catch(error => showError(el, error));
 
     </script>
 
