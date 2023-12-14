@@ -1,53 +1,58 @@
+from vega_datasets import data
+
 from src.models.base import ChartBase
 import altair as alt
 import pandas as pd
 
 
-class DonutChart(ChartBase):
+class FacetedArea(ChartBase):
     def __init__(self):
-        super().__init__(pd.DataFrame({
-            "category": [1, 2, 3, 4, 5, 6],
-            "value": [4, 6, 10, 3, 7, 8]
-        })
-        )
+        super().__init__(data.stocks())
         self.chart = self.defineChart()
 
     def defineChart(self):
-        return alt.Chart(self.dataset).mark_arc(innerRadius=50).encode(
-            theta="value",
-            color="category:N",
-        )
+        return alt.Chart(self.dataset).transform_filter(alt.datum.symbol != "GOOG").mark_area().encode(
+            x="date:T",
+            y="price:Q",
+            color="symbol:N",
+            row=alt.Row("symbol:N").sort(["MSFT", "AAPL", "IBM", "AMZN"]),
+        ).properties(height=50, width=400)
 
 
-class PieChart(ChartBase):
+class LayeredArea(ChartBase):
     def __init__(self):
-        super().__init__(pd.DataFrame({"category": [1, 2, 3, 4, 5, 6], "value": [4, 6, 10, 3, 7, 8]}))
+        super().__init__(data.iowa_electricity())
         self.chart = self.defineChart()
 
     def defineChart(self):
-        return alt.Chart(self.dataset).mark_arc().encode(
-            theta="value",
-            color="category"
+        return alt.Chart(self.dataset).mark_area(opacity=0.3).encode(
+            x="year:T",
+            y=alt.Y("net_generation:Q").stack(None),
+            color="source:N"
         )
 
 
-class RadialChart(ChartBase):
+class StreamGraph(ChartBase):
     def __init__(self):
-        super().__init__(pd.DataFrame({"values": [12, 23, 47, 6, 52, 19]}))
+        super().__init__(data.unemployment_across_industries.url)
         self.chart = self.defineChart()
 
     def defineChart(self):
-        base = alt.Chart(self.dataset).encode(
-            alt.Theta("values:Q").stack(True),
-            alt.Radius("values").scale(type="sqrt", zero=True, rangeMin=20),
-            color="values:N",
+        return alt.Chart(self.dataset).mark_area().encode(
+            alt.X('yearmonth(date):T').axis(format='%Y', domain=False, tickSize=0),
+            alt.Y('sum(count):Q').stack('center').axis(None),
+            alt.Color('series:N').scale(scheme='category20b')
+        ).interactive()
+
+
+class NormalizedStackedArea(ChartBase):
+    def __init__(self):
+        super().__init__(data.iowa_electricity())
+        self.chart = self.defineChart()
+
+    def defineChart(self):
+        return alt.Chart(self.dataset).mark_area().encode(
+            x="year:T",
+            y=alt.Y("net_generation:Q").stack("normalize"),
+            color="source:N"
         )
-
-        c1 = base.mark_arc(innerRadius=20, stroke="#fff")
-
-        c2 = base.mark_text(radiusOffset=10).encode(text="values:Q")
-
-        return c1 + c2
-
-
-

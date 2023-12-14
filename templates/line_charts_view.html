@@ -50,7 +50,7 @@
 
     <script type="text/javascript">
 
-        const apiUrl = 'http://127.0.0.1:5000/api/barchart';
+        const apiUrl = 'http://127.0.0.1:5000/api/linechart';
         let spec;
 
         let embedOpt = {"mode": "vega-lite"};
@@ -87,10 +87,10 @@
 
         function callCharts(theme_name) {
 
-            fetchCharts({type_chart: '4', theme_chart: theme_name}, 'chart')
+            fetchCharts({type_chart: '1', theme_chart: theme_name}, 'chart')
             fetchCharts({type_chart: '3', theme_chart: theme_name}, 'chart2')
             fetchCharts({type_chart: '2', theme_chart: theme_name}, 'chart3')
-            fetchCharts({type_chart: '1', theme_chart: theme_name}, 'chart4')
+            fetchCharts({type_chart: '4', theme_chart: theme_name}, 'chart4')
         }
 
         callCharts("default")

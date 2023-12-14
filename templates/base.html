@@ -9,8 +9,16 @@
         <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
 
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>l
 
     {% endblock %}
 </head>
@@ -18,52 +26,54 @@
 
 {% block header %}
     <header>
-        <nav class="navbar navbar-expand-lg ">
-            <div class="container-fluid">
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class=" btn-lg" href="/" aria-label="Inicio">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn-lg" href="/barcharts" aria-label="Bar Charts"
-                               style="border-bottom: 4px solid #332288;">Bar Charts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn-lg" href="/linecharts" aria-label="Line Charts"
-                               style="border-bottom: 4px solid #117733;">Line Charts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn-lg" href="#" aria-label="Contacto" style="border-bottom: 4px solid #44AA99;">Area
-                                Charts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn-lg" href="#" aria-label="Contacto" style="border-bottom: 4px solid #88CCEE;">Circular
-                                Plots</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn-lg" href="#" aria-label="Contacto" style="border-bottom: 4px solid #DDCC77;">Scatter
-                                Plots</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn-lg" href="#" aria-label="Contacto" style="border-bottom: 4px solid #CC6677;">Distribution</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn-lg" href="#" aria-label="Contacto" style="border-bottom: 4px solid #AA4499;">Maps</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn-lg" href="#" aria-label="Contacto" style="border-bottom: 4px solid #882255;">Tables</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn-lg" href="#" aria-label="Contacto" style="border-bottom: 4px solid #000000;">Inspiration</a>
-                        </li>
-                    </ul>
-                </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto" style="gap: 1rem;">
+                    <li class="nav-item mx-1">
+                        <a class="btn-lg" href="/barcharts" aria-label="Bar Charts"
+                           style="border-bottom: 4px solid #332288;">Bar Charts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn-lg" href="/linecharts" aria-label="Line Charts"
+                           style="border-bottom: 4px solid #117733;">Line Charts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn-lg" href="/areacharts" aria-label="Contacto"
+                           style="border-bottom: 4px solid #44AA99;">Area
+                            Charts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn-lg" href="/circularplots" aria-label="Contacto"
+                           style="border-bottom: 4px solid #88CCEE;">Circular
+                            Plots</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn-lg" href="/scatterplots" aria-label="Contacto"
+                           style="border-bottom: 4px solid #DDCC77;">Scatter
+                            Plots</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn-lg" href="/distributioncharts" aria-label="Contacto"
+                           style="border-bottom: 4px solid #CC6677;">Distribution</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn-lg" href="/mapscharts" aria-label="Contacto"
+                           style="border-bottom: 4px solid #AA4499;">Maps</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn-lg" href="/tablescharts" aria-label="Contacto"
+                           style="border-bottom: 4px solid #882255;">Tables</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn-lg" href="/inspiration" aria-label="Contacto"
+                           style="border-bottom: 4px solid #000000;">Inspiration</a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
@@ -71,6 +81,7 @@
 {% endblock %}
 
 <main class="container my-2">
+
     {% block content %}{% endblock %}
 </main>
 

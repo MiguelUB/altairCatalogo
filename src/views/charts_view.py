@@ -11,6 +11,7 @@ charts_bp = Blueprint(
     __name__,
     template_folder="templates",
     static_folder="static",
+
 )
 
 
@@ -56,25 +57,25 @@ def scatter_plots_view():
     )
 
 
-@charts_bp.route("/distribution", methods=["GET"])
+@charts_bp.route("/distributioncharts", methods=["GET"])
 def distribution_view():
     return render_template(
-        "distribution_view.html",
+        "distributions_charts_view.html",
         title="Distribution"
     )
 
 
-@charts_bp.route("/maps", methods=["GET"])
+@charts_bp.route("/mapscharts", methods=["GET"])
 def maps_view():
     return render_template(
-        "maps_view.html",
+        "maps_charts_view.html",
         title="Maps"
     )
 
 
-@charts_bp.route("/tables", methods=["GET"])
+@charts_bp.route("/tablescharts", methods=["GET"])
 def tables_view():
     return render_template(
-        "tables_view.html",
+        "tables_charts_view.html",
         title="Tables"
     )

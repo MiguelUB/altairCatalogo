@@ -48,7 +48,7 @@ class FilledStepChart(ChartBase):
 
 class LineChartInterpolation(ChartBase):
     def __init__(self):
-        super().__init__(data.sotcks())
+        super().__init__(data.stocks())
         self.chart = self.defineChart()
 
     def defineChart(self):
