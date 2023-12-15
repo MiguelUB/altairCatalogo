@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.15.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"axis": {"domain": true, "domainColor": "#000F3A", "grid": true, "gridCap": "round", "gridColor": "#FFFFFF", "gridDash": [1, 2], "gridWidth": 0.5, "labelColor": "#FFFFFF", "labelFont": "Roboto, Arial, sans-serif", "labelPadding": 2, "tickColor": "#000F3A", "tickOpacity": 1.0, "ticks": true, "tickSize": 4, "titleColor": "#FFFFFF", "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 15}, "legend": {"labelColor": "#FFFFFF", "labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "symbolSize": 40, "titleColor": "#FFFFFF", "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 15, "titlePadding": 4}, "range": {"category": ["#82ACF3", "#148636", "#77B98A", "#148636", "#E58686"], "diverging": ["#5C3A8C", "#148636", "#00A39E", "#6BCAC7", "#FFE796", "#E58686", "#dc267f", "#701240"], "heatmap": ["#811D1D", "#942121", "#D32F2F", "#DA5252", "#E58686", "#EDAAAA", "#FBEAEA"], "ramp": ["#811D1D", "#942121", "#D32F2F", "#DA5252", "#E58686", "#EDAAAA", "#FBEAEA"]}, "background": "#333333", "header": {"labelColor": "#FFFFFF", "labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleColor": "#FFFFFF", "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 19}, "title": {"anchor": "start", "color": "#FFFFFF", "font": "Roboto, Arial, sans-serif", "fontSize": 23, "fontWeight": "bold", "offset": 20, "subtitleColor": "#FFFFFF", "subtitleFontSize": 19}, "view": {"continuousHeight": 300, "continuousWidth": 400, "stroke": "tan"}, "arc": {"stroke": "#FFFFFF", "strokeWidth": 1}, "bar": {"fill": "#4C88EE", "stroke": "#FFFFFF"}, "line": {"stroke": "#4C88EE", "strokeWidth": 2}, "path": {"stroke": "#4C88EE", "strokeWidth": 0.5}, "point": {"fill": "#4C88EE", "filled": true, "shape": "circle"}, "rect": {"fill": "#4C88EE"}, "rule": {"stroke": "#4C88EE"}, "shape": {"stroke": "#4C88EE"}, "text": {"color": "#FFFFFF", "font": "Roboto, Arial, sans-serif", "fontSize": 15}}, "data": {"name": "data-bb61008ba0c766c5601afa5323d12ad4"}, "mark": {"type": "area"}, "encoding": {"color": {"field": "source", "type": "nominal"}, "x": {"field": "year", "type": "temporal"}, "y": {"field": "net_generation", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-bb61008ba0c766c5601afa5323d12ad4": [{"year": "2001-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 35361}, {"year": "2002-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 35991}, {"year": "2003-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 36234}, {"year": "2004-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 36205}, {"year": "2005-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 36883}, {"year": "2006-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 37014}, {"year": "2007-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 41389}, {"year": "2008-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 42734}, {"year": "2009-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 38620}, {"year": "2010-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 42750}, {"year": "2011-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 39361}, {"year": "2012-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 37379}, {"year": "2013-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 34873}, {"year": "2014-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 35250}, {"year": "2015-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 32319}, {"year": "2016-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 28437}, {"year": "2017-01-01T00:00:00", "source": "Fossil Fuels", "net_generation": 29329}, {"year": "2001-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 3853}, {"year": "2002-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 4574}, {"year": "2003-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 3988}, {"year": "2004-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 4929}, {"year": "2005-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 4538}, {"year": "2006-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 5095}, {"year": "2007-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 4519}, {"year": "2008-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 5282}, {"year": "2009-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 4679}, {"year": "2010-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 4451}, {"year": "2011-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 5215}, {"year": "2012-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 4347}, {"year": "2013-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 5321}, {"year": "2014-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 4152}, {"year": "2015-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 5243}, {"year": "2016-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 4703}, {"year": "2017-01-01T00:00:00", "source": "Nuclear Energy", "net_generation": 5214}, {"year": "2001-01-01T00:00:00", "source": "Renewables", "net_generation": 1437}, {"year": "2002-01-01T00:00:00", "source": "Renewables", "net_generation": 1963}, {"year": "2003-01-01T00:00:00", "source": "Renewables", "net_generation": 1885}, {"year": "2004-01-01T00:00:00", "source": "Renewables", "net_generation": 2102}, {"year": "2005-01-01T00:00:00", "source": "Renewables", "net_generation": 2724}, {"year": "2006-01-01T00:00:00", "source": "Renewables", "net_generation": 3364}, {"year": "2007-01-01T00:00:00", "source": "Renewables", "net_generation": 3870}, {"year": "2008-01-01T00:00:00", "source": "Renewables", "net_generation": 5070}, {"year": "2009-01-01T00:00:00", "source": "Renewables", "net_generation": 8560}, {"year": "2010-01-01T00:00:00", "source": "Renewables", "net_generation": 10308}, {"year": "2011-01-01T00:00:00", "source": "Renewables", "net_generation": 11795}, {"year": "2012-01-01T00:00:00", "source": "Renewables", "net_generation": 14949}, {"year": "2013-01-01T00:00:00", "source": "Renewables", "net_generation": 16476}, {"year": "2014-01-01T00:00:00", "source": "Renewables", "net_generation": 17452}, {"year": "2015-01-01T00:00:00", "source": "Renewables", "net_generation": 19091}, {"year": "2016-01-01T00:00:00", "source": "Renewables", "net_generation": 21241}, {"year": "2017-01-01T00:00:00", "source": "Renewables", "net_generation": 21933}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 import json
 
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect
 
 from src.models.BarCharts import BarChart
 import altair as alt
@@ -78,4 +78,16 @@ def tables_view():
     return render_template(
         "tables_charts_view.html",
         title="Tables"
+    )
+
+@charts_bp.route("/proba", methods=["GET"])
+def default_chart_view():
+    return render_template(
+        "proba.html"
+    )
+
+@charts_bp.route("/probaaccesible", methods=["GET"])
+def accesible_chart_view():
+    return render_template(
+        "proba_accesible.html",
     )

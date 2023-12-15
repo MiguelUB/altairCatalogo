@@ -1,6 +1,5 @@
 from altair import Chart
 from ub_accesible_theme_altair.theme import accesible_theme
-from ub_accesible_theme_altair.themes import tema_daltonimo_deuteranopia, black_theme
 from ub_accesible_theme_altair.tokens import COLORS
 from ub_accesible_theme_altair.utils import create_accesible_scheme
 
@@ -120,3 +119,7 @@ class DivergingStackedBarChart(ChartBase):
             alt.Row("a:N").title("Factor A").header(labelAngle=0),
             alt.Column("b:N").title("Factor B"),
         )
+
+
+
+
