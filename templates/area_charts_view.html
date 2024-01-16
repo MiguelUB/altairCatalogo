@@ -6,31 +6,27 @@
 {% endblock %}
 {% block content %}
     <h1>{{ title }}</h1>
-    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-        officia deserunt mollit anim id est laborum.
+    <p> Los gráficos de áreas, o area charts, son representaciones visuales que muestran la magnitud de datos mediante
+        áreas coloreadas debajo de una línea. Estos gráficos son efectivos para resaltar la contribución relativa de
+        diferentes categorías o variables a lo largo del tiempo. Para hacerlos accesibles, es esencial proporcionar
+        etiquetas descriptivas para ejes y áreas, elegir colores con suficiente contraste y distinguibles, ofrecer texto
+        alternativo explicativo para usuarios con discapacidades visuales, y asegurarse de que la escala y la ordenación
+        sean comprensibles. Al igual que con otros tipos de gráficos, la atención al contraste, tamaño de fuente y
+        navegación en gráficos interactivos contribuye a una experiencia accesible para una audiencia diversa.
     </p>
 
     <label for="miSelector">Select a theme:</label>
     <select id="miSelector">
         <option value="default">Default</option>
-        <option value="dark_accessible_theme">dark_accessible_theme</option>
-        <option value="accesible_theme">accesible</option>
-        <option value="deuteranopia_theme">deuteranopia_theme</option>
-        <option value="protonopia_theme">protonopia_theme</option>
-        <option value="tritanopia_theme">tritanopia_theme</option>
-        <option value="dark">dark</option>
-        <option value="ggplot2">ggplot2</option>
+        <option value="accessible_theme">Accessible theme</option>
+        <option value="dark_accessible_theme">Dark accessible theme</option>
+        <option value="filler_pattern_theme">Filler pattern theme</option>
+        <option value="print_theme">Print theme</option>
     </select>
     <div class="container-fluid ">
         <div class="d-flex flex-row flex-wrap">
             <div class="c">
                 <div id="chart"></div>
-            </div>
-            <div class="c">
-                <div id="chart2"></div>
             </div>
             <div class="c">
                 <div id="chart3"></div>
@@ -53,7 +49,7 @@
         const apiUrl = 'http://127.0.0.1:5000/api/areachart';
         let spec;
 
-        let embedOpt = {"mode": "vega-lite"};
+        let embedOpt = {"renderer": "svg"};
 
         // Parámetros de consulta
         let theme_chart = "default"
@@ -106,25 +102,16 @@
                     case "default":
                         callCharts(valorSeleccionado)
                         break;
+                    case "accessible_theme":
+                        callCharts(valorSeleccionado)
+                        break;
                     case "dark_accessible_theme":
                         callCharts(valorSeleccionado)
                         break;
-                    case "accesible_theme":
+                    case "filler_pattern_theme":
                         callCharts(valorSeleccionado)
                         break;
-                    case "deuteranopia_theme":
-                        callCharts(valorSeleccionado)
-                        break;
-                    case "protonopia_theme":
-                        callCharts(valorSeleccionado)
-                        break;
-                    case "tritanopia_theme":
-                        callCharts(valorSeleccionado)
-                        break;
-                    case "dark":
-                        callCharts(valorSeleccionado)
-                        break;
-                    case "ggplot2":
+                    case "print_theme":
                         callCharts(valorSeleccionado)
                         break;
                     default:

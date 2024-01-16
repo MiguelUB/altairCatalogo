@@ -6,23 +6,23 @@
 {% endblock %}
 {% block content %}
     <h1>{{ title }}</h1>
-    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-        officia deserunt mollit anim id est laborum.
+    <p>
+        Los gráficos circulares, o circular plots, representan datos en una forma de círculo dividido en secciones
+        proporcionales a los valores que representan. Aunque son populares, es importante abordar su accesibilidad. Para
+        lograr esto, se deben proporcionar etiquetas claras y descriptivas para cada sección del círculo, asegurando que
+        la información sea comprensible para todos los usuarios. Además, se deben evitar esquemas de color confusos y
+        proporcionar alternativas textuales para usuarios con discapacidades visuales. La simplicidad en la presentación
+        y la atención al contraste y tamaño de fuente son esenciales para garantizar que la información sea accesible y
+        comprensible para una amplia audiencia.
     </p>
 
     <label for="miSelector">Select a theme:</label>
     <select id="miSelector">
         <option value="default">Default</option>
-        <option value="dark_accessible_theme">dark_accessible_theme</option>
-        <option value="accesible_theme">accesible</option>
-        <option value="deuteranopia_theme">deuteranopia_theme</option>
-        <option value="tritanopia_theme">tritanopia_theme</option>
-        <option value="protonopia_theme">protonopia_theme</option>
-        <option value="dark">dark</option>
-        <option value="ggplot2">ggplot2</option>
+        <option value="accessible_theme">Accessible theme</option>
+        <option value="dark_accessible_theme">Dark accessible theme</option>
+        <option value="filler_pattern_theme">Filler pattern theme</option>
+        <option value="print_theme">Print theme</option>
     </select>
     <div class="container-fluid ">
         <div class="d-flex flex-row flex-wrap">
@@ -53,7 +53,7 @@
         const apiUrl = 'http://127.0.0.1:5000/api/circularplots';
         let spec;
 
-        let embedOpt = {"mode": "vega-lite"};
+        let embedOpt = {"renderer": "svg"};
 
         // Parámetros de consulta
         let theme_chart = "default"
@@ -96,7 +96,7 @@
         callCharts("default")
 
 
- $(document).ready(function () {
+        $(document).ready(function () {
             $("#miSelector").change(function () {
                 // Obtener el valor seleccionado
                 var valorSeleccionado = $(this).val();
@@ -106,25 +106,16 @@
                     case "default":
                         callCharts(valorSeleccionado)
                         break;
+                    case "accessible_theme":
+                        callCharts(valorSeleccionado)
+                        break;
                     case "dark_accessible_theme":
                         callCharts(valorSeleccionado)
                         break;
-                    case "accesible_theme":
+                    case "filler_pattern_theme":
                         callCharts(valorSeleccionado)
                         break;
-                    case "deuteranopia_theme":
-                        callCharts(valorSeleccionado)
-                        break;
-                    case "protonopia_theme":
-                        callCharts(valorSeleccionado)
-                        break;
-                    case "tritanopia_theme":
-                        callCharts(valorSeleccionado)
-                        break;
-                    case "dark":
-                        callCharts(valorSeleccionado)
-                        break;
-                    case "ggplot2":
+                    case "print_theme":
                         callCharts(valorSeleccionado)
                         break;
                     default:

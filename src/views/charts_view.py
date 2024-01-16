@@ -80,14 +80,26 @@ def tables_view():
         title="Tables"
     )
 
-@charts_bp.route("/proba", methods=["GET"])
-def default_chart_view():
+@charts_bp.route("/barchart-of-categories", methods=["GET"])
+def bar_of_categories():
     return render_template(
-        "proba.html"
+        "barchart_of_categories.html"
     )
 
-@charts_bp.route("/probaaccesible", methods=["GET"])
-def accesible_chart_view():
+@charts_bp.route("/barchart-w-description", methods=["GET"])
+def barchart_w_description():
     return render_template(
-        "proba_accesible.html",
+        "barchart_w_description.html"
+    )
+
+@charts_bp.route("/composed-chart", methods=["GET"])
+def composed_chart():
+    return render_template(
+        "layeredchart.html"
+    )
+
+@charts_bp.route("/horizontalbarchart", methods=["GET"])
+def horizontal_barchart():
+    return render_template(
+        "stackedbarchart.html"
     )

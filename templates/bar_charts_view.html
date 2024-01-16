@@ -6,23 +6,21 @@
 {% endblock %}
 {% block content %}
     <h1>{{ title }}</h1>
-    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-        officia deserunt mollit anim id est laborum.
+    <p>
+        Los gráficos de barras, o barcharts, son representaciones visuales comunes para mostrar datos cuantitativos
+        mediante barras rectangulares proporcionales a los valores de categorías específicas. Para hacerlos accesibles,
+        es esencial proporcionar etiquetas claras y descriptivas, utilizar colores con suficiente contraste, ofrecer
+        texto alternativo informativo, mantener un tamaño de fuente legible y asegurarse de que la escala y la
+        ordenación sean comprensibles.
     </p>
 
     <label for="miSelector">Select a theme:</label>
     <select id="miSelector">
         <option value="default">Default</option>
-        <option value="dark_accessible_theme">dark_accessible_theme</option>
-        <option value="accesible_theme">accesible</option>
-        <option value="deuteranopia_theme">deuteranopia_theme</option>
-        <option value="tritanopia_theme">tritanopia_theme</option>
-        <option value="protonopia_theme">protonopia_theme</option>
-        <option value="dark">dark</option>
-        <option value="ggplot2">ggplot2</option>
+        <option value="accessible_theme">Accessible theme</option>
+        <option value="dark_accessible_theme">Dark accessible theme</option>
+        <option value="filler_pattern_theme">Filler pattern theme</option>
+        <option value="print_theme">Print theme</option>
     </select>
     <div class="container-fluid ">
         <div class="d-flex flex-row flex-wrap">
@@ -53,7 +51,7 @@
         const apiUrl = 'http://127.0.0.1:5000/api/barchart';
         let spec;
 
-        let embedOpt = {"mode": "vega-lite"};
+        let embedOpt = {"renderer": "svg"};
 
         // Parámetros de consulta
         let theme_chart = "default"
@@ -96,7 +94,7 @@
         callCharts("default")
 
 
-      $(document).ready(function () {
+        $(document).ready(function () {
             $("#miSelector").change(function () {
                 // Obtener el valor seleccionado
                 var valorSeleccionado = $(this).val();
@@ -106,25 +104,16 @@
                     case "default":
                         callCharts(valorSeleccionado)
                         break;
+                    case "accessible_theme":
+                        callCharts(valorSeleccionado)
+                        break;
                     case "dark_accessible_theme":
                         callCharts(valorSeleccionado)
                         break;
-                    case "accesible_theme":
+                    case "filler_pattern_theme":
                         callCharts(valorSeleccionado)
                         break;
-                    case "deuteranopia_theme":
-                        callCharts(valorSeleccionado)
-                        break;
-                    case "protonopia_theme":
-                        callCharts(valorSeleccionado)
-                        break;
-                    case "tritanopia_theme":
-                        callCharts(valorSeleccionado)
-                        break;
-                    case "dark":
-                        callCharts(valorSeleccionado)
-                        break;
-                    case "ggplot2":
+                    case "print_theme":
                         callCharts(valorSeleccionado)
                         break;
                     default:
